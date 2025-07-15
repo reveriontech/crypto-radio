@@ -1,0 +1,360 @@
+@use "sass:math";
+
+// ANCHOR: Color Variables
+
+// Light Mode Colors (Default)
+:root {
+  // ANCHOR: Brand & Blue Scale
+  --color-primary: #275097; 
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e40af;
+  --color-blue-900: #1e3150; 
+  --color-blue-800: #273a5e;
+  --color-blue-700: #31476e;
+  --color-blue-600: #3b5485;
+  --color-blue-500: #45619c;
+  --color-blue-400: #4f6ea3;
+  --color-blue-300: #597baf;
+
+  // Secondary Colors
+  --color-secondary: #f97316;
+  --color-secondary-light: #fb923c;
+  --color-secondary-dark: #ea580c;
+
+  // Neutral Colors
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  // Background Colors
+  --color-bg-primary: var(--color-white);
+  --color-bg-header: var(--color-primary); 
+  --color-bg-secondary: var(--color-gray-50);
+  --color-bg-tertiary: var(--color-gray-100);
+  --color-bg-footer: var(--color-gray-800);
+
+  // Text Colors
+  --color-text-primary: var(--color-blue-900); // Main text color
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-text-inverse: var(--color-white);
+  --color-text-accent: var(--color-primary);
+
+  // Border Colors
+  --color-border-primary: var(--color-gray-200);
+  --color-border-secondary: var(--color-gray-300);
+  --color-border-accent: var(--color-secondary);
+
+  // Interactive Colors
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-primary-dark);
+  --color-button-primary: var(--color-primary);
+  --color-button-primary-hover: var(--color-primary-dark);
+  --color-button-secondary: var(--color-secondary);
+  --color-button-secondary-hover: var(--color-secondary-dark);
+
+  // Status Colors
+  --color-success: #d5e6c6;
+  --color-success-dark: #a2c87c;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: var(--color-primary);
+
+  // Special Colors
+  --color-on-air: var(--color-secondary);
+  --color-live-indicator: var(--color-secondary);
+  --color-bitcoin-banner: var(--color-secondary);
+}
+
+// Dark Mode Colors
+[data-theme="dark"] {
+  // ANCHOR: Brand & Blue Scale (same as light mode for consistency)
+  --color-primary: #275097;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e40af;
+  --color-blue-900: #1e3150;
+  --color-blue-800: #273a5e;
+  --color-blue-700: #31476e;
+  --color-blue-600: #3b5485;
+  --color-blue-500: #45619c;
+  --color-blue-400: #4f6ea3;
+  --color-blue-300: #597baf;
+
+  // Secondary Colors
+  --color-secondary: #f97316;
+  --color-secondary-light: #fb923c;
+  --color-secondary-dark: #ea580c;
+
+  // Background Colors (inverted for dark mode
+  --color-bg-header: var(--color-blue-900);
+  --color-bg-secondary: var(--color-blue-800);
+  --color-bg-tertiary: var(--color-blue-700);
+  --color-bg-footer: var(--color-black);
+
+  // Text Colors (inverted for dark mode)
+  --color-text-primary: var(--color-white);
+  --color-text-secondary: var(--color-blue-300);
+  --color-text-tertiary: var(--color-blue-400);
+  --color-text-inverse: var(--color-blue-900);
+  --color-text-accent: var(--color-secondary);
+
+  // Border Colors (adjusted for dark mode)
+  --color-border-primary: var(--color-blue-700);
+  --color-border-secondary: var(--color-blue-600);
+  --color-border-accent: var(--color-secondary);
+
+  // Interactive Colors (adjusted for dark mode)
+  --color-link: var(--color-primary-light);
+  --color-link-hover: var(--color-primary);
+  --color-button-primary: var(--color-primary);
+  --color-button-primary-hover: var(--color-primary-light);
+  --color-button-secondary: var(--color-secondary);
+  --color-button-secondary-hover: var(--color-secondary-light);
+
+  // Status Colors (same as light mode)
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: var(--color-primary-light);
+
+  // Special Colors (same as light mode)
+  --color-on-air: var(--color-secondary);
+  --color-live-indicator: var(--color-secondary);
+  --color-bitcoin-banner: var(--color-secondary);
+}
+
+// ANCHOR: Typography Variables
+
+// Font Families
+$font-family-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-secondary: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, sans-serif;
+$font-family-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+  "Courier New", monospace;
+
+// Font Sizes
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-2xl: 1.5rem; // 24px
+$font-size-3xl: 1.875rem; // 30px
+$font-size-4xl: 2.25rem; // 36px
+$font-size-5xl: 3rem; // 48px
+$font-size-6xl: 3.75rem; // 60px
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2;
+
+// Letter Spacing
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;
+$letter-spacing-wider: 0.05em;
+$letter-spacing-widest: 0.1em;
+
+// ANCHOR: Spacing Variables
+
+// Base spacing unit
+$spacing-unit: 0.25rem; // 4px
+
+// Spacing scale
+$spacing-0: 0;
+$spacing-1: $spacing-unit; // 4px
+$spacing-2: $spacing-unit * 2; // 8px
+$spacing-3: $spacing-unit * 3; // 12px
+$spacing-4: $spacing-unit * 4; // 16px
+$spacing-5: $spacing-unit * 5; // 20px
+$spacing-6: $spacing-unit * 6; // 24px
+$spacing-8: $spacing-unit * 8; // 32px
+$spacing-10: $spacing-unit * 10; // 40px
+$spacing-12: $spacing-unit * 12; // 48px
+$spacing-16: $spacing-unit * 16; // 64px
+$spacing-20: $spacing-unit * 20; // 80px
+$spacing-24: $spacing-unit * 24; // 96px
+$spacing-32: $spacing-unit * 32; // 128px
+
+// ANCHOR: Layout Variables
+
+// Container max widths
+$container-sm: 640px;
+$container-md: 768px;
+$container-lg: 1024px;
+$container-xl: 1280px;
+$container-2xl: 1536px;
+
+// Grid columns
+$grid-columns: 12;
+$grid-gutter: $spacing-6;
+
+// ANCHOR: Breakpoint Variables
+
+// Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ANCHOR: Border Radius Variables
+
+$border-radius-none: 0;
+$border-radius-sm: 0.125rem; // 2px
+$border-radius-base: 0.25rem; // 4px
+$border-radius-md: 0.375rem; // 6px
+$border-radius-lg: 0.5rem; // 8px
+$border-radius-xl: 0.75rem; // 12px
+$border-radius-2xl: 1rem; // 16px
+$border-radius-3xl: 1.5rem; // 24px
+$border-radius-full: 9999px;
+
+// ANCHOR: Shadow Variables
+
+$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+$shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+// ANCHOR: Z-Index Variables
+
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// ANCHOR: Animation Variables
+
+// Transition durations
+$transition-duration-fast: 150ms;
+$transition-duration-base: 300ms;
+$transition-duration-slow: 500ms;
+
+// Transition timing functions
+$transition-timing-ease: ease;
+$transition-timing-linear: linear;
+$transition-timing-ease-in: ease-in;
+$transition-timing-ease-out: ease-out;
+$transition-timing-ease-in-out: ease-in-out;
+
+// ANCHOR: Component-Specific Variables
+
+// Header
+$header-height: 80px;
+$header-padding: $spacing-4;
+$nav-item-spacing: $spacing-6;
+
+// Hero Section
+$hero-min-height: 400px;
+$hero-padding: $spacing-8;
+
+// Article Cards
+$article-card-border-radius: $border-radius-lg;
+$article-card-padding: $spacing-6;
+$article-card-shadow: $shadow-md;
+$article-card-hover-shadow: $shadow-lg;
+
+// Video Player
+$video-player-aspect-ratio: math.div(16, 9);
+$video-player-border-radius: $border-radius-lg;
+
+// Newsletter
+$newsletter-padding: $spacing-8;
+$newsletter-border-radius: $border-radius-xl;
+
+// ANCHOR: Utility Mixins
+
+// Media query mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+// Focus styles mixin
+@mixin focus-ring {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Button base styles mixin
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-6;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  transition: all $transition-duration-base $transition-timing-ease;
+  cursor: pointer;
+  border: none;
+
+  &:focus {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Card base styles mixin
+@mixin card-base {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: $article-card-border-radius;
+  box-shadow: $article-card-shadow;
+  transition: box-shadow $transition-duration-base $transition-timing-ease;
+
+  &:hover {
+    box-shadow: $article-card-hover-shadow;
+  }
+}

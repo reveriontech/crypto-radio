@@ -1,0 +1,326 @@
+@use "@/style/utils/variables" as upnav;
+
+.upnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-bg-primary);
+  padding: 1rem 2.5rem;
+  position: relative; // Add this to make dropdown position relative to navbar
+
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    img {
+      width: 7rem;
+      height: auto;
+    }
+
+    .upnav__right {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 3rem;
+
+      .upnav__right__stream {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        svg {
+          color: var(--color-text-primary);
+          width: 1.5rem;
+          height: 1.5rem;
+          display: block;
+        }
+
+        p {
+          color: var(--color-text-primary);
+          font-weight: upnav.$font-weight-extrabold;
+          margin: 0;
+          font-size: 1rem;
+          line-height: 1;
+          user-select: none;
+        }
+      }
+
+      .upnav__right__search {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  // ANCHOR: Dropdown Card Style
+  .upnav__dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 2.85rem;
+    right: 7rem !important;
+    max-width: 38rem;
+    min-height: 16rem;
+    width: calc(100vw - 5rem);
+    background-color: var(--color-success);
+    border: 2px solid var(--color-success-dark);
+    border-radius: upnav.$border-radius-lg;
+    padding: upnav.$spacing-unit;
+    z-index: upnav.$z-index-dropdown;
+    margin-top: 0.5rem;
+    transform: scale(0.7);
+    transform-origin: top right;
+
+    // Large screens (desktop)
+    @media (min-width: 1280px) {
+      top: 2.8rem;
+      width: 38rem;
+      right: 2.5rem;
+    }
+
+    // Medium screens (tablet)
+    @media (max-width: 1279px) and (min-width: 768px) {
+      top: 2.8rem;
+      width: 38rem;
+      right: 2rem;
+    }
+
+    // Small screens (mobile landscape)
+    @media (max-width: 767px) and (min-width: 641px) {
+      top: 2.8rem;
+      width: calc(100vw - 4rem);
+      right: 1.5rem;
+    }
+
+    .upnav__dropdown__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: upnav.$spacing-2;
+
+      p {
+        color: var(--color-gray-900);
+        font-size: 0.8rem;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .upnav__dropdown__body {
+      display: flex;
+      flex-direction: row;
+      padding: upnav.$spacing-2;
+      gap: upnav.$spacing-5;
+      position: relative;
+
+      // Responsive adjustments for dropdown body
+      @media (max-width: 640px) {
+        flex-direction: column;
+        align-items: center;
+        gap: upnav.$spacing-3;
+      }
+
+      .upnav__dropdown__body__image {
+        width: 11rem;
+        height: auto;
+        flex-shrink: 0;
+
+        // Responsive image size
+        @media (max-width: 767px) {
+          width: 9rem;
+        }
+
+        @media (max-width: 640px) {
+          width: 100%;
+          max-width: 15rem;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: upnav.$border-radius-md;
+        }
+      }
+
+      .upnav__dropdown__body__content {
+        display: flex;
+        flex-direction: column;
+
+        // Center text on mobile
+        @media (max-width: 640px) {
+          text-align: center;
+        }
+
+        .upnav__dropdown__body__content__title {
+          color: var(--color-gray-900);
+          font-weight: upnav.$font-weight-extrabold;
+          font-size: 1.4rem;
+          line-height: 1.25;
+
+          // Responsive font size
+          @media (max-width: 767px) {
+            font-size: 1.2rem;
+          }
+        }
+
+        p {
+          color: var(--color-gray-900);
+          font-size: 0.9rem;
+
+          // Responsive font size
+          @media (max-width: 767px) {
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      // ANCHOR: Ellipsis Top Right
+      .upnav__dropdown__body__ellipsis {
+        cursor: pointer;
+
+        // Position adjustment for mobile
+        @media (max-width: 640px) {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        svg {
+          color: var(--color-gray-900);
+          width: 1.5rem;
+        }
+      }
+      // ANCHOR: END Ellipsis Top Right
+    }
+
+    // ANCHOR: Dropdown Controls Row
+    .upnav__dropdown__controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: upnav.$spacing-2 0 0 0;
+      gap: upnav.$spacing-24;
+      width: 100%;
+      margin-top: upnav.$spacing-2;
+
+      // Responsive gap adjustment
+      @media (max-width: 767px) {
+        gap: upnav.$spacing-16;
+      }
+
+      @media (max-width: 480px) {
+        gap: upnav.$spacing-8;
+      }
+
+      .upnav__dropdown__controls__skip-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+          color: var(--color-gray-900);
+        }
+      }
+
+      .upnav__dropdown__controls__play {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+          color: var(--color-gray-900);
+        }
+      }
+
+      .upnav__dropdown__controls__skip-forward {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+          color: var(--color-gray-900);
+        }
+      }
+
+      .upnav__dropdown__controls__heart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+          color: var(--color-gray-900);
+        }
+      }
+
+      .upnav__dropdown__controls__list-music {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+          color: var(--color-gray-900);
+        }
+      }
+    }
+
+    .space {
+      height: 1rem;
+    }
+  }
+}
+
+// ANCHOR: Responsive - Mobile Only Show Logo and Menu
+@media (max-width: 640px) {
+  .upnav {
+    padding: 1rem 1rem;
+
+    &__logo {
+      justify-content: space-between;
+
+      .upnav__right {
+        display: none;
+      }
+    }
+
+    &__menu {
+      display: block;
+    }
+
+    // Hide dropdown on mobile since the trigger is hidden
+    .upnav__dropdown {
+      display: none;
+    }
+  }
+}

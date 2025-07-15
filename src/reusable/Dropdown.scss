@@ -1,0 +1,75 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 180px;
+  font-family: $font-family-primary;
+}
+
+.dropdown-label {
+  display: block;
+  margin-bottom: $spacing-2;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+.dropdown-toggle {
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color $transition-duration-base $transition-timing-ease;
+  outline: none;
+
+  &:hover, &:focus {
+    border-color: var(--color-primary);
+  }
+}
+
+.dropdown-arrow {
+  margin-left: $spacing-2;
+  font-size: $font-size-lg;
+  color: var(--color-primary);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  margin-top: $spacing-2;
+  z-index: $z-index-dropdown;
+  max-height: 220px;
+  overflow-y: auto;
+  animation: dropdown-fade-in $transition-duration-base $transition-timing-ease;
+}
+
+@keyframes dropdown-fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-option {
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  color: var(--color-text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-duration-base $transition-timing-ease;
+
+  &:hover, &.selected {
+    background: var(--color-bg-secondary);
+    color: var(--color-primary);
+  }
+} 

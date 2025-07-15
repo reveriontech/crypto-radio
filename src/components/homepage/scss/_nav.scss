@@ -1,0 +1,19 @@
+@use '@/style/utils/variables' as nav;
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: nav.$spacing-4;
+    background-color: var(--color-bg-header);
+
+    &__list {
+        display: flex;
+        gap: nav.$spacing-6;
+
+        a {
+            text-decoration: none;
+            color: var(--color-text-inverse);
+        }
+    }
+}
