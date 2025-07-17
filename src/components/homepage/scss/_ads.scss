@@ -17,8 +17,7 @@
         object-fit: cover;
         transition: ads.$transition-timing-ease;
         user-select: none;
-        filter: none;
-        mix-blend-mode: normal;
+
     }
 
     @media screen and (max-width: ads.$breakpoint-md) {
@@ -28,8 +27,6 @@
             object-fit: contain;
             transition: ads.$transition-timing-ease;
             user-select: none;
-            filter: none;
-            mix-blend-mode: normal;
         }
     }
 }
