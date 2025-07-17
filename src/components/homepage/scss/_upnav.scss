@@ -76,7 +76,7 @@
     padding: upnav.$spacing-unit;
     z-index: upnav.$z-index-dropdown;
     margin-top: 0.5rem;
-    transform: scale(0.7);
+    transform: scale(0.8) !important;
     transform-origin: top right;
 
     // Large screens (desktop)
@@ -105,6 +105,7 @@
       justify-content: center;
       align-items: center;
       padding: upnav.$spacing-2;
+      user-select: none;
 
       p {
         color: var(--color-gray-900);
@@ -117,11 +118,12 @@
     }
 
     .upnav__dropdown__body {
+      position: relative;
       display: flex;
       flex-direction: row;
       padding: upnav.$spacing-2;
       gap: upnav.$spacing-5;
-      position: relative;
+      user-select: none;
 
       // Responsive adjustments for dropdown body
       @media (max-width: 640px) {
@@ -150,6 +152,7 @@
           height: 100%;
           object-fit: cover;
           border-radius: upnav.$border-radius-md;
+          user-select: none;
         }
       }
 
@@ -214,6 +217,7 @@
       gap: upnav.$spacing-24;
       width: 100%;
       margin-top: upnav.$spacing-2;
+      user-select: none;
 
       // Responsive gap adjustment
       @media (max-width: 767px) {

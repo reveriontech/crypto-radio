@@ -10,10 +10,15 @@
     &__list {
         display: flex;
         gap: nav.$spacing-6;
+        flex-wrap: wrap;
 
         a {
             text-decoration: none;
             color: var(--color-text-inverse);
         }
     }
-}
+
+    @media screen and (max-width: nav.$breakpoint-md) {
+        display: none;
+    }
+} 
