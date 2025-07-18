@@ -10,7 +10,6 @@ const HomeArticle = () => {
     const { liveStream, latestNews } = HomeArticleFunction();
     return (
         <section className="home-article">
-
             <div className="home-article-container">
                 {/* Live stream */}
                 <div className="div1">
@@ -25,18 +24,20 @@ const HomeArticle = () => {
                 <div className="div2">
                     <div className="latest-news-container">
                         <h3>Latest News</h3>
-                        {latestNews.map((item) => (
-                            <div key={item.id} className="latest-news-item">
-                                <div className="news-date">
-                                    <Calendar />
-                                    <span>
-                                        {" "}
-                                        {item.month} {item.day}
-                                    </span>
+                        <div className="news-items-scroll">
+                            {latestNews.map((item) => (
+                                <div key={item.id} className="latest-news-item">
+                                    <div className="news-date">
+                                        <Calendar />
+                                        <span>
+                                            {" "}
+                                            {item.month} {item.day}
+                                        </span>
+                                    </div>
+                                    <li>{item.description}</li>
                                 </div>
-                                <li>{item.description}</li>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
 

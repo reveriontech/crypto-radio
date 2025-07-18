@@ -60,6 +60,38 @@ export const HomeArticleFunction = () => {
         description: 'Music is a form of art that expresses emotions and ideas through sound.',
         image: music,
     },
+    {
+        id: 7,
+        month: 'July',
+        day: '17',
+        title: 'Music',
+        description: 'Music is a form of art that expresses emotions and ideas through sound.',
+        image: music,
+    },
+    {
+        id: 8,
+        month: 'July',
+        day: '17',
+        title: 'Music',
+        description: 'Music is a form of art that expresses emotions and ideas through sound.',
+        image: music,
+    },
+    {
+        id: 9,
+        month: 'July',
+        day: '17',
+        title: 'Music',
+        description: 'Music is a form of art that expresses emotions and ideas through sound.',
+        image: music,
+    },
+    {
+        id: 10,
+        month: 'July',
+        day: '17',
+        title: 'Music',
+        description: 'Music is a form of art that expresses emotions and ideas through sound.',
+        image: music,
+    },
 ]
 
     return { 
